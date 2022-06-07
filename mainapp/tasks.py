@@ -14,9 +14,10 @@ def send_feedback_mail(message_form: Dict[str, Union[int, str]]) -> None:
     logger.info(f"Send message: '{message_form}'")
     model_user = get_user_model()
     user_obj = model_user.objects.get(pk=message_form["user_id"])
+    message = message_form["message"]
     send_mail(
         "TechSupport Help",  # subject (title)
-        message_form["message"],  # message
+        f"message: {message} \nfrom user: {user_obj.email}",  # message
         settings.EMAIL_HOST_USER,  # send from
         ["dmitry.valiev174@gmail.com"],  # send to
         fail_silently=False,
