@@ -2,6 +2,7 @@ import logging
 from typing import Dict, Union
 
 from celery import shared_task
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 
@@ -16,8 +17,8 @@ def send_feedback_mail(message_form: Dict[str, Union[int, str]]) -> None:
     send_mail(
         "TechSupport Help",  # subject (title)
         message_form["message"],  # message
-        user_obj.email,  # send from
-        ["techsupport@braniac.com"],  # send to
+        settings.EMAIL_HOST_USER,  # send from
+        ["dmitry.valiev174@gmail.com"],  # send to
         fail_silently=False,
     )
     return None

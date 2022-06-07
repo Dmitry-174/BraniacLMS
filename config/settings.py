@@ -220,16 +220,17 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Full list of email settings:
 #   https://docs.djangoproject.com/en/3.2/ref/settings/#email
-# EMAIL_HOST = "localhost"
-# EMAIL_PORT = "25"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
 
 # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
-# EMAIL_HOST_USER = "django@geekshop.local"
-# EMAIL_HOST_PASSWORD = "geekshop"
-# EMAIL_USE_SSL = False
+
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 # If server support TLS:
-# EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True
 
 # Email as files for debug
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = "var/email-messages/"
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = "var/email-messages/"
